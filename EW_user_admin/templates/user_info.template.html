@@ -23,7 +23,9 @@
 				<td>{{item.description}}</td>
                 <td class="text-center">{{item.stock_qty}}</td>
                 <td class="text-center">{{item.price}}</td>
-                <td class="text-center">edit | remove</td>
+                <td class="text-center">
+                    <a href="{% url 'edit_info' product_id=item.id %}">edit</a>
+                 | remove</td>
 			</tr>
             {% endfor %}
 		</tbody>
