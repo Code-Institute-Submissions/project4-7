@@ -1,0 +1,16 @@
+{% extends 'base.template.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<section>
+    <h3>A new product is going online</h3>
+	<div id="form">
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{ form|crispy}}
+			<input type="Submit"/>
+        </form>
+	</div>
+</section>
+{% endblock %}

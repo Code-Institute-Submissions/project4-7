@@ -20,3 +20,14 @@ def edit_info (request, product_id):
         return render (request, 'edit_info.template.html', {
             'form' : edit_form
         })
+
+def add_product (request):
+    if request.method == "POST":
+        form = ProductForm(request.POST)
+        form.save()
+        return redirect(reverse(user_info))
+    else:
+        form = ProductForm()
+        return render (request, 'add_product.template.html', {
+            'form' : form
+        })
