@@ -7,3 +7,6 @@ def user_info (request):
     return render (request, 'user_info.template.html', {
         'products' : products
     })
+
+def edit_info (request):
+    return render (request, 'edit_info.template.html')

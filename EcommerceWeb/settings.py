@@ -42,6 +42,9 @@ INSTALLED_APPS = [
 
     # Own App
     'EW_user_admin',
+
+    # External dependencies
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +132,4 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
