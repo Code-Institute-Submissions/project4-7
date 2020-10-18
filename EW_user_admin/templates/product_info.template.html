@@ -2,6 +2,11 @@
 
 {% block content %}
 <section class="p-5">
+    {% if messages %}  
+        <div class='alert alert-success'>    
+              {% for message in messages %} <p>{{ message }}</p> {% endfor %}
+        </div>
+    {% endif %}
 	<table class="table">
 		<thead>
 			<tr>

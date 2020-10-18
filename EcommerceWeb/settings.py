@@ -160,4 +160,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Crispy forms + bootstrap4
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Flash messages 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'

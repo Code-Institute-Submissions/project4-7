@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Product
 from .forms import ProductForm
+from django.contrib import messages
 
 # Create your views here.
 def product_info (request):
@@ -14,6 +15,7 @@ def edit_product (request, product_id):
     if request.method == "POST":
         edit_form = ProductForm(request.POST, instance=product_to_be_edit)
         edit_form.save()
+        messages.success(request, f"The product {edit_form.cleaned_data['name']} has been updated")
         return redirect(reverse(product_info))
     else:
         edit_form = ProductForm(instance=product_to_be_edit)
