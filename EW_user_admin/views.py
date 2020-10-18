@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Product
 from .forms import ProductForm
 
@@ -11,7 +11,12 @@ def user_info (request):
 
 def edit_info (request, product_id):
     product_to_be_edit = get_object_or_404(Product, pk=product_id)
-    edit_form = ProductForm(instance=product_to_be_edit)
-    return render (request, 'edit_info.template.html', {
-        'form' : edit_form
-    })
+    if request.method == "POST":
+        edit_form = ProductForm(request.POST, instance=product_to_be_edit)
+        edit_form.save()
+        return redirect(reverse(user_info))
+    else:
+        edit_form = ProductForm(instance=product_to_be_edit)
+        return render (request, 'edit_info.template.html', {
+            'form' : edit_form
+        })
