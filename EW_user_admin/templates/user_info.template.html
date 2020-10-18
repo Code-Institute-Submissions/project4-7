@@ -1,2 +1,32 @@
 {% extends 'base.template.html' %}
 
+{% block content %}
+<section>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Product id</th>
+				<th scope="col">Name</th>
+				<th scope="col">Category</th>
+				<th scope="col">Description</th>
+				<th scope="col" class="text-center">Stock Qty</th>
+				<th scope="col" class="text-center">Selling Price ($)</th>
+                <th></th>
+			</tr>
+		</thead>
+		<tbody>
+            {% for item in products %}
+			<tr>
+				<th scope="row">{{item.id}}</th>
+				<td>{{item.name}}</td>
+				<td>{{item.category}}</td>
+				<td>{{item.description}}</td>
+                <td class="text-center">{{item.stock_qty}}</td>
+                <td class="text-center">{{item.price}}</td>
+                <td class="text-center">edit | remove</td>
+			</tr>
+            {% endfor %}
+		</tbody>
+	</table>
+</section>
+{% endblock %}
