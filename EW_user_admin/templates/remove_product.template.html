@@ -5,10 +5,11 @@
 {% block content %}
 <section>
 	<div id="form">
+        <h5>You are going to remove item : [ {{product.id}} ]{{product.name}}</h5>
 		<form method="POST" enctype="multipart/form-data">
 			{% csrf_token %}
 			{{ form|crispy}}
-			<input type="Submit"/>
+			<input type="Submit" value="Confirm Delete"/>
         </form>
 	</div>
 </section>

@@ -33,4 +33,11 @@ def add_product (request):
         })
 
 def remove_product(request, product_id):
-    return render(request,'remove_product.template.html')
+    product_to_be_remove = get_object_or_404(Product, pk=product_id)
+    if request.method=="POST":
+        product_to_be_remove.delete()
+        return redirect(reverse(product_info))
+    else:        
+        return render(request,'remove_product.template.html', {
+            'product' : product_to_be_remove
+        })

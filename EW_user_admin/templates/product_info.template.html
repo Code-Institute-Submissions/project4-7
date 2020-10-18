@@ -1,7 +1,7 @@
 {% extends 'base.template.html' %}
 
 {% block content %}
-<section>
+<section class="p-5">
 	<table class="table">
 		<thead>
 			<tr>
@@ -12,7 +12,7 @@
 				<th scope="col" class="text-center">Stock Qty</th>
 				<th scope="col" class="text-center">Selling Price ($)</th>
                 <th>
-                <a href="{% url 'add_product' %}" class="badge badge-light p-1">edit</a>
+                <a href="{% url 'add_product' %}" class="badge badge-light p-2">Add new product</a>
                 </th>
 			</tr>
 		</thead>
