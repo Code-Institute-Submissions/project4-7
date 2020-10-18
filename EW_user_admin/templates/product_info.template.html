@@ -11,7 +11,9 @@
 				<th scope="col">Description</th>
 				<th scope="col" class="text-center">Stock Qty</th>
 				<th scope="col" class="text-center">Selling Price ($)</th>
-                <th></th>
+                <th>
+                <a href="{% url 'add_product' %}" class="badge badge-light p-1">edit</a>
+                </th>
 			</tr>
 		</thead>
 		<tbody>
@@ -24,8 +26,10 @@
                 <td class="text-center">{{item.stock_qty}}</td>
                 <td class="text-center">{{item.price}}</td>
                 <td class="text-center">
-                    <a href="{% url 'edit_info' product_id=item.id %}">edit</a>
-                 | remove</td>
+                    <a href="{% url 'edit_product' product_id=item.id %}">edit</a>
+                 | 
+                    <a href="{% url 'remove_product' product_id=item.id %}">remove</a>
+</td>
 			</tr>
             {% endfor %}
 		</tbody>
