@@ -1,14 +1,26 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-# Create your models here.
+# # Create your models here.
 class Product(models.Model):
     
+    # LINK TO USER 
+    user = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE
+    )
+ 
     # NAME OF PRODUCT
     name = models.CharField(
-        max_length=30,
+        max_length=60,
         blank=False
     )
-    
+    # COMPANY NAME
+    company = models.CharField(
+        max_length=60,
+        default="Private Company",
+        blank=False
+    )
     # CATEGORY THE PRODUCT BELONG TO
     CATEGORY = [
         ('Formal-Wear','Formal-Wear'),
@@ -27,6 +39,7 @@ class Product(models.Model):
     description = models.TextField(
         max_length = 255
     )
+
     # CURRENT STOCK QUANTITY
     stock_qty = models.IntegerField(
         blank = False

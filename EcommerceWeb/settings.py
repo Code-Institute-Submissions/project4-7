@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Own App
-    'EW_user_admin',
+    'user_console',
 
     # External dependencies
     'crispy_forms',

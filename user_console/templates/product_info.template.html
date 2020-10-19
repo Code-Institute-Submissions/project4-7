@@ -10,12 +10,12 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th scope="col">Product id</th>
-				<th scope="col">Name</th>
-				<th scope="col">Category</th>
-				<th scope="col">Description</th>
-				<th scope="col" class="text-center">Stock Qty</th>
-				<th scope="col" class="text-center">Selling Price ($)</th>
+				<th scope="col"> <div class="badge badge-dark p-2">ID</div></th>
+				<th scope="col"><div class="badge badge-dark p-2">Name</div></th>
+				<th scope="col"><div class="badge badge-dark p-2">Category</div></th>
+				<th scope="col"><div class="badge badge-dark p-2">Description</div></th>
+				<th scope="col" class="text-center"><div class="badge badge-dark p-2">Stock Qty</div></th>
+				<th scope="col" class="text-center"><div class="badge badge-dark p-2">Selling Price ($)</div></th>
                 <th>
                 <a href="{% url 'add_product' %}" class="badge badge-light p-2">Add new product</a>
                 </th>
@@ -34,6 +34,7 @@
                     <a href="{% url 'edit_product' product_id=item.id %}">edit</a>
                  | 
                     <a href="{% url 'remove_product' product_id=item.id %}">remove</a>
+                    {{ item.user }}
 </td>
 			</tr>
             {% endfor %}
