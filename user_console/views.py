@@ -13,14 +13,23 @@ def product_info (request):
 
 @login_required
 def edit_product (request, product_id):
+
     product_to_be_edit = get_object_or_404(Product, pk=product_id)
+    # edit_form = ProductForm(request.POST, instance=product_to_be_edit)
+
     if request.method == "POST":
         edit_form = ProductForm(request.POST, instance=product_to_be_edit)
-        updated_form = edit_form.save(commit=False)
-        updated_form.user = product_to_be_edit.user
-        updated_form.save()
-        messages.success(request, f"The product {updated_form.cleaned_data['name']} has been updated")
-        return redirect(reverse(product_info))
+        if edit_form.is_valid():
+            updated_form = edit_form.save(commit=False)
+            updated_form.user = product_to_be_edit.user
+            updated_form.save()
+            messages.success(request, f"The product {updated_form.name} has been updated")
+            return redirect(reverse(product_info))
+        else:
+            # edit_form = ProductForm(instance=product_to_be_edit)
+            return render (request, 'edit_product.template.html', {
+                'form' : edit_form
+            })
     else:
         edit_form = ProductForm(instance=product_to_be_edit)
         return render (request, 'edit_product.template.html', {
@@ -34,7 +43,7 @@ def add_product (request):
         new_product = form.save(commit=False)
         new_product.user = request.user
         new_product.save()
-        messages.success(request, f"The product {new_product.cleaned_data['name']} has been added")
+        messages.success(request, f"The product {new_product.name} has been added")
         return redirect(reverse(product_info))
     else:
         form = ProductForm()
@@ -47,7 +56,7 @@ def remove_product(request, product_id):
     product_to_be_remove = get_object_or_404(Product, pk=product_id)
     if request.method=="POST":
         product_to_be_remove.delete()
-        messages.success(request, f"The product {product_to_be_remove.cleaned_data['name']} has been removed")
+        messages.success(request, f"The product {product_to_be_remove.name} has been removed")
         return redirect(reverse(product_info))
     else:        
         return render(request,'remove_product.template.html', {

@@ -1,9 +1,11 @@
 {% extends 'base.template.html' %}
+{% load crispy_forms_tags %}
+{% load cloudinary %}
 
 {% block content %}
 <section class="p-5">
     {% if messages %}  
-        <div class='alert alert-success'>    
+        <div class="alert alert-success">    
               {% for message in messages %} <p>{{ message }}</p> {% endfor %}
         </div>
     {% endif %}
@@ -11,11 +13,13 @@
 		<thead>
 			<tr>
 				<th scope="col"> <div class="badge badge-dark p-2">ID</div></th>
+				<th scope="col"><div class="badge badge-dark p-2">Company</div></th>
 				<th scope="col"><div class="badge badge-dark p-2">Name</div></th>
 				<th scope="col"><div class="badge badge-dark p-2">Category</div></th>
 				<th scope="col"><div class="badge badge-dark p-2">Description</div></th>
 				<th scope="col" class="text-center"><div class="badge badge-dark p-2">Stock Qty</div></th>
 				<th scope="col" class="text-center"><div class="badge badge-dark p-2">Selling Price ($)</div></th>
+				<th scope="col"><div class="badge badge-dark p-2">Cover Image</div></th>
                 <th>
                 <a href="{% url 'add_product' %}" class="badge badge-light p-2">Add new product</a>
                 </th>
@@ -25,11 +29,13 @@
             {% for item in products %}
 			<tr>
 				<th scope="row">{{item.id}}</th>
+				<td>{{item.company}}</td>
 				<td>{{item.name}}</td>
 				<td>{{item.category}}</td>
 				<td>{{item.description}}</td>
                 <td class="text-center">{{item.stock_qty}}</td>
                 <td class="text-center">{{item.price}}</td>
+                <td> {% cloudinary item.cover height=100 %} {{item.cover}}</td>
                 <td class="text-center">
                     <a href="{% url 'edit_product' product_id=item.id %}">edit</a>
                  | 

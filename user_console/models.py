@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 # # Create your models here.
 class Product(models.Model):
@@ -51,6 +52,9 @@ class Product(models.Model):
         max_digits=5,
         decimal_places=2
     )
+
+    # COVER IMAGE
+    cover = CloudinaryField()
 
     def __str__(self):
         return (self.name)

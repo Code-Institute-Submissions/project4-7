@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # External dependencies
     'crispy_forms',
+    'cloudinary',
 
     # Auth Apps
     'django.contrib.sites',
@@ -166,3 +167,10 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Flash messages 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+# Setting for Cloudinary
+CLOUDINARY = {
+    'cloud_name': os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    'api_key': os.environ.get("CLOUDINARY_API_KEY"),
+    'api_secret': os.environ.get("CLOUDINARY_API_SECRET"),
+}
