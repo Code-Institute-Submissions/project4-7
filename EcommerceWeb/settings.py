@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # Own App
     'main_app',
     'user_console',
+    'cart',
 
     # External dependencies
     'crispy_forms',
