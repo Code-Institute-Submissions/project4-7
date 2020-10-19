@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Own App
+    'main_app',
     'user_console',
 
     # External dependencies
