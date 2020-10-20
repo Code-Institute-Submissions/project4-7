@@ -24,15 +24,15 @@ class Product(models.Model):
     )
     # CATEGORY THE PRODUCT BELONG TO
     CATEGORY = [
-        ('Formal-Wear','Formal-Wear'),
+        ('Business-Wear','Business-Wear'),
         ('Casual-Wear','Casual-Wear'),
+        ('Footwear','Footwear'),
         ('Accessories','Accessories'),
-        ('Ties','Ties'),
     ]
     category = models.CharField(
         max_length=15,
         choices=CATEGORY,
-        default='Formal-Wear',
+        default='Business-Wear',
         blank=False
     )
                                         

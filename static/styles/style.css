@@ -3,7 +3,8 @@
 
 /* Header Font */
 /* font-family: 'Dancing Script', cursive; */
-
+/* Nav-link fonts */
+/* font-family: 'Lateef', cursive; */
 /* Body Font */
 /* font-family: 'Raleway', sans-serif; */
 
@@ -15,4 +16,10 @@
 .nav-link {
     font-family: 'Lateef', cursive;
     font-size: 120%;
+}
+/* Footer */
+footer {
+    background: black;
+    color : whitesmoke;
+    font-family: 'Lateef', cursive;
 }
