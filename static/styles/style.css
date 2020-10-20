@@ -79,12 +79,44 @@ body {
     display: block
 }
 .shop-overlay{
-    background: rgba(0,0,0,0.6);
+    background: rgba(44, 43, 43, 0.9);
     width: 100%;
     height: 100%;
     position: absolute;
     top:0;
     display : none;
+    text-align: center
+}
+.shop-overlay>:nth-child(1) {
+    height: 40%;
+    padding: 10%;
+}
+.shop-overlay>:nth-child(2) {
+    height: 20%;
+}
+.shop-overlay>:nth-child(3) {
+    height: 20%;
+}
+.shop-overlay>:nth-child(4) {
+    height: 20%;
+}
+.shop-cart-bar{
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+}
+.shop-overlay>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.shop-cart-bar>:nth-child(1){
+    flex: 2;
+}
+.shop-cart-bar>:nth-child(2){
+    flex: 5;
+}
+.shop-cart-bar>:nth-child(3){
+    flex: 2;
 }
 /* Footer */
 footer {

@@ -1,6 +1,4 @@
-{% extends 'base.template.html' %} 
-{% load cloudinary %} 
-{% block content %}
+{% extends 'base.template.html' %} {% load cloudinary %} {% block content %}
 
 <section class="container-fluid p-0">
   <p class="bg-title">SHOP ARCADE</p>
@@ -9,7 +7,19 @@
     <div class="col-lg-3 col-md-6 col-12">
       <div class="shop-thumb">
         {% cloudinary item.cover width=250 crop="fill" %}
-        <div class="shop-overlay"></div>
+        <div class="shop-overlay text-light">
+            <div><small class="text-muted">{{item.category}}</small></div>
+            <div><h5>{{item.name}}</h5></div>
+            <div><h6>${{item.price}}</h6></div>
+            <div class="shop-cart-bar">
+                <div><a href="" ><i class="fas fa-info-circle text-warning"></i></a></div>
+                <div><a href="" class="nav-link text-warning">Add Cart</a></div>
+                <div><a href=""><i class="far fa-star text-warning"></i></a></div>
+                
+                
+                
+            </div>
+        </div>
       </div>
     </div>
     {% endfor %}
