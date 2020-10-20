@@ -35,7 +35,6 @@
     return ret;
   }
   $(function () {
-
     $('#form input[type="file"]')
     .cloudinary_fileupload({
       dropZone: '#form',
@@ -47,7 +46,6 @@
       },
     })
     .on('cloudinarydone', function (e, data) {
-        $('#form  input[type="file"]').parent().parent().remove();
         $('.status_value').text('Updating Completed...');
         var info = $('<div class="uploaded_info"/>');
         $(info).append($('<div class="data"/>').append(prettydump(data.result)));
@@ -58,9 +56,7 @@
         ));
         console.log(data.result.secure_url)
         $('.uploaded_info_holder').append(info);
-        // $('#form]').append(`
-        // <input type='hidden' name='cover' value='adp6uk2ymobwfa8ulqeh'/>
-        // `)
+        $('#form  input[type="file"]').parent().parent().remove();
     });
   });
 </script>
