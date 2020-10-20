@@ -19,9 +19,8 @@ body {
 .nav-link {
     font-family: 'Lateef', cursive;
     font-size: 120%;
+    letter-spacing: 4px;
 }
-
-
 
 /* main_app css */
 .img-thumb {
@@ -64,9 +63,30 @@ body {
     background-repeat: no-repeat;
 }
 
+.shop-thumb {
+    height : 250px;
+    width: 250px;
+
+    -webkit-box-shadow: -4px -1px 46px -20px rgba(105,105,105,1);
+    -moz-box-shadow: -4px -1px 46px -20px rgba(105,105,105,1);
+    box-shadow: -4px -1px 46px -20px rgba(105,105,105,1);
+
+    background: lightblue;
+    margin : 10px auto;
+}
+
 /* Footer */
 footer {
     background: black;
     color : whitesmoke;
     font-family: 'Lateef', cursive;
+}
+
+/* common css */
+.bg-title {
+    background: rgb(231, 231, 231);
+    font-family: 'Lateef', cursive;
+    font-size: 140%;
+    letter-spacing: 4px;
+    padding: 10px 15px ;
 }

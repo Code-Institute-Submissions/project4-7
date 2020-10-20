@@ -1,0 +1,31 @@
+{% extends 'base.template.html' %} 
+{% load cloudinary %} 
+{% block content %}
+
+<section class="container-fluid p-0">
+  <p class="bg-title">SHOP ARCADE</p>
+  <div class="row p-3">
+    {% for item in products %}
+    <div class="col-lg-3 col-md-6 col-12">
+      <div class="shop-thumb">
+      {% cloudinary item.cover width=250 crop="fill" %}
+      </div>
+    </div>
+    {% endfor %}
+
+    <!-- <div class="col-lg-3 col-md-6 col-12">
+        <div class="shop-thumb">
+        </div>
+    </div> 
+    <div class="col-lg-3 col-md-6 col-12">
+        <div class="shop-thumb">
+        </div>
+    </div> 
+    <div class="col-lg-3 col-md-6 col-12">
+        <div class="shop-thumb">
+        </div>
+    </div>  -->
+  </div>
+</section>
+
+{% endblock %}
