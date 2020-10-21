@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'main_app',
     'user_console',
     'cart',
+    'payment',
 
     # External dependencies
     'crispy_forms',
@@ -176,3 +177,6 @@ CLOUDINARY = {
     'api_key': os.environ.get("CLOUDINARY_API_KEY"),
     'api_secret': os.environ.get("CLOUDINARY_API_SECRET"),
 }
+
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')

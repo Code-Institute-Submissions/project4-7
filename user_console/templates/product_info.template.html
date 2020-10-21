@@ -3,7 +3,9 @@
 {% load cloudinary %}
 
 {% block content %}
-<section class="p-5">
+<section>
+    <p class="bg-title">USER ADMIN CONSOLE</p>
+
     {% if messages %}  
         <div class="alert alert-success">    
               {% for message in messages %} <p>{{ message }}</p> {% endfor %}
