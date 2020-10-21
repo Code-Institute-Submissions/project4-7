@@ -20,7 +20,7 @@
           <td class="text-left w-50">{{cart_item.name}}</td>
           <td>$ {{ cart_item.price }}</td>
           <td>
-          <a href="" class="btn btn-light"><i class="far fa-minus-square text-dark"></i></a>
+          <a href="{% url 'minus_qty' product_id=key %}" class="btn btn-light"><i class="far fa-minus-square text-dark"></i></a>
           {{cart_item.qty}}
           <a href="{% url 'add_qty' product_id=key %}" class="btn btn-light"><i class="far fa-plus-square text-dark"></i></a>
           </td>

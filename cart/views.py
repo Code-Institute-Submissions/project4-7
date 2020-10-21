@@ -49,3 +49,14 @@ def add_qty (request, product_id):
     cart[product_id]['qty'] += 1
     request.session['shopping_cart'] = cart
     return redirect(reverse('view_cart'))
+
+def minus_qty (request, product_id):
+    cart = request.session.get('shopping_cart', {})
+    if cart[product_id]['qty'] == 1 :
+        del cart[product_id]
+        request.session['shopping_cart'] = cart
+        return redirect(reverse('view_cart'))
+    else:
+        cart[product_id]['qty'] -= 1
+        request.session['shopping_cart'] = cart
+        return redirect(reverse('view_cart'))
