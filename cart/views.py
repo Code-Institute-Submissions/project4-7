@@ -27,11 +27,18 @@ def add_cart(request, product_id):
         # save the cart back to sessions
         request.session['shopping_cart'] = cart
         messages.success(request, "product has been added to your cart!")
-        # return redirect(reverse('view_cart'))
     else:
         cart[product_id]['qty'] +=1        
         # save the cart back to sessions
         request.session['shopping_cart'] = cart
 
-        # return HttpResponse('Product added')
+    return redirect(reverse('view_cart'))
+
+def remove_item (request, product_id):
+    cart = request.session.get('shopping_cart', {})
+    # Check if product exist in cart then remove it
+    if product_id in cart:
+        del cart[product_id]
+        request.session['shopping_cart'] = cart
+
     return redirect(reverse('view_cart'))

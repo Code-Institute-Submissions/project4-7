@@ -19,9 +19,13 @@
           <td><input type="checkbox" disabled /></td>
           <td class="text-left w-50">{{cart_item.name}}</td>
           <td>$ {{ cart_item.price }}</td>
-          <td>{{cart_item.qty}}</td>
+          <td>
+          <a href="" class="btn btn-light"><i class="far fa-minus-square text-dark"></i></a>
+          {{cart_item.qty}}
+          <a href="" class="btn btn-light"><i class="far fa-plus-square text-dark"></i></a>
+          </td>
           <td>Total</td>
-          <td><a href="" class="text-danger">Delete</a></td>
+          <td><a href="{% url 'remove_item' product_id=key %}" class="text-muted"><small>X</small></a></td>
         </tr>
         {%endfor%}
         <tr>
