@@ -1,6 +1,48 @@
-{% extends 'base.template.html' %}
-{% block content %}
-<section>
-    <p class="bg-title">PAYMENT SUMMARY</p>
+{% extends 'base.template.html' %} {% block content %}
+<section class="container-fluid p-0">
+  <p class="bg-title">YOUR PAYMENT SUMMARY</p>
+  <div class="m-3">
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th class="text-left w-50">Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for key, cart_item in cart.items %}
+        <tr>
+          <td class="text-left w-50">{{cart_item.name}}</td>
+          <td>$ {{ cart_item.price }}</td>
+          <td>{{cart_item.qty}}</td>
+          <td>Total</td>
+        </tr>
+        {%endfor%}
+        <tr>
+          <td colspan="3"></td>
+          <td><h4>Total : $ 0.00</h4></td>
+        </tr>
+        <tr>
+          <td colspan="3"></td>
+          <td>
+            <form method="POST">
+              {% csrf_token %}
+              <script
+                src="https://checkout.stripe.com/checkout.js"
+                class="stripe-button"
+                data-key="{{ key }}"
+                data-description="Ecommerce"
+                data-amount="{{amount}}"
+                data-locale="auto"
+              ></script>
+              <input type="hidden" name="amount" value="{{amount}}" />
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 {% endblock %}

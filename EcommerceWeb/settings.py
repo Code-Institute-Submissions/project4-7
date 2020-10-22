@@ -171,6 +171,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Flash messages 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
+STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+
 # Setting for Cloudinary
 CLOUDINARY = {
     'cloud_name': os.environ.get("CLOUDINARY_CLOUD_NAME"),
@@ -178,5 +181,3 @@ CLOUDINARY = {
     'api_secret': os.environ.get("CLOUDINARY_API_SECRET"),
 }
 
-STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
-STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')

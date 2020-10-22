@@ -3,5 +3,4 @@ import payment.views
 
 urlpatterns = [
     path('', payment.views.checkout, name='checkout'),
-    
 ]
