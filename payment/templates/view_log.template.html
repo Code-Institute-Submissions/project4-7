@@ -1,0 +1,38 @@
+{% extends 'base.template.html' %} {% block content %}
+<section class="container-fluid p-0">
+	<p class="bg-title">PAYMENT TRANSACTION SUMMARY</p>
+	<div class="m-3">
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Transaction Reference</th>
+					<th class="text-left">Product Purchase</th>
+					<th>Purchased Price</th>
+					<th>Quantity</th>
+					<th>Buyer Name</th>
+					<th>Status</th>
+					<th>Transaction date/time</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for log in transaction_history %}
+				<tr>
+					<td><span class="badge badge-light">{{log.id}}</span></td>
+					<td>{{log.transaction_reference}}</td>
+					<td class="text-left">{{log.name}}</td>
+					<td>$ {{ log.purchase_price }}</td>
+					<td>{{log.purchase_qty}}</td>
+					<td>{{log.user}}</td>
+					<td>{{log.transaction_status}}</td>
+					<td>{{log.timestamp}}</td>
+				</tr>
+				{%endfor%}
+			    <tr>
+                    <td colspan="8"> --- End of Report --- </td>
+                </tr>
+			</tbody>
+		</table>
+	</div>
+</section>
+{% endblock %}

@@ -28,6 +28,10 @@ class Payment_log (models.Model):
     transaction_status = models.CharField(
         max_length=10
     )
+    # Transaction reference to track products bought in same transaction
+    transaction_reference = models.IntegerField(
+        blank=False
+    )
     # Track the timestamp of transaction
     timestamp = models.DateTimeField(
         auto_now_add=True
