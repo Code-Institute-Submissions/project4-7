@@ -5,8 +5,10 @@ from main_app.views import index
 from payment.models import Payment_log
 from user_console.models import Product
 from user_console.forms import ProductForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def checkout(request):
     cart = request.session.get("shopping_cart", {})
 
@@ -56,8 +58,14 @@ def checkout(request):
             
         return redirect(reverse('index'))
 
+@login_required
 def view_log (request):
-    transaction_history = Payment_log.objects.all()
-    return render (request, 'view_log.template.html', {
-        'transaction_history' : transaction_history,
-    })
+    # check for superuser else redirect back to index page
+    if request.user.is_superuser:
+        transaction_history = Payment_log.objects.all()
+        return render (request, 'view_log.template.html', {
+            'transaction_history' : transaction_history,
+        })
+    else:
+        # return user back to index
+        return redirect(reverse(index))

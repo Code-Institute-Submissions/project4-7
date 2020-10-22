@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from main_app.views import index
 
 # Create your views here.
+@login_required
 def product_info (request):
     # check for superuser else redirect back to index page
     if request.user.is_superuser:
