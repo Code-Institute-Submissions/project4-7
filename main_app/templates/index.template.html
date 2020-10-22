@@ -3,7 +3,7 @@
 <main class="container-fluid px-md-5 px-3 py-3">
   <div class="row">
     <!-- Carousell display -->
-    <div class="col-md-8 col-12">
+    <div class="col-12">
       <div
         id="carouselExampleInterval"
         class="carousel slide"
@@ -49,27 +49,35 @@
       </div>
     </div>
     <!-- Search Option -->
-    <div class="col-md-4 d-flex align-items-center">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="img-business img-thumb ml-lg-auto">
+    <div class="col-md-12">
+        <div class="d-flex flex-wrap">
+            <div class="col">
+                <a href="{% url 'display_category' category='Business-Wear' %}">
+                <div class="img-business img-thumb">
                     <h6>Business Wear</h6>
                 </div>
+                </a>
             </div>    
-            <div class="col-lg-6">
-                <div class="img-casual img-thumb mr-lg-auto">
+            <div class="col">
+                <a href="{% url 'display_category' category='Casual-Wear' %}">            
+                <div class="img-casual img-thumb">
                     <h6>Casual Wear</h6>
                 </div>
+                </a>
             </div>
-            <div class="col-lg-6">
-                <div class="img-accessories img-thumb ml-lg-auto">
+            <div class="col">
+                <a href="{% url 'display_category' category='Accessories' %}">
+                <div class="img-accessories img-thumb">
                     <h6>Accessories</h6>
                 </div>
+                </a>
             </div>
-            <div class="col-lg-6">
-                <div class="img-footwear img-thumb mr-lg-auto">
+            <div class="col">
+                <a href="{% url 'display_category' category='Footwear' %}">
+                <div class="img-footwear img-thumb">
                     <h6>Footwear</h6>
                 </div>
+                </a>
             </div>    
         </div>
     </div>

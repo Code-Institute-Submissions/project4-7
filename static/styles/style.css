@@ -33,7 +33,7 @@ body {
 
     display: flex;
     align-items: flex-end;    
-    margin : 10% 5% ;
+    margin : 10% auto ;
 }
 .img-thumb h6 {
     background: black;

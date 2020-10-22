@@ -9,3 +9,9 @@ def shop(request):
     return render(request,'shop.template.html', {
         'products' : products
     })
+
+def display_category(request, category):
+    products = Product.objects.filter(category=category)
+    return render(request,'shop.template.html', {
+        'products' : products
+    })
