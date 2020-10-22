@@ -10,9 +10,9 @@ class Payment_log (models.Model):
         on_delete=models.CASCADE
     )
     # Track the product purchase
-    name = models.ForeignKey(
-        Product,
-        on_delete=models.CASCADE
+    name = models.CharField(
+        max_length=60,
+        blank=False
     )
     # Track purchase quantity
     purchase_qty = models.IntegerField(
@@ -25,13 +25,8 @@ class Payment_log (models.Model):
         decimal_places=2
     )
     # Track if transaction is successful
-    STATUS = [
-        ('Completed', 'Completed'),
-        ('Failed', 'Failed'),
-    ]
     transaction_status = models.CharField(
-        max_length = 10,
-        choices = STATUS,
+        max_length=10
     )
     # Track the timestamp of transaction
     timestamp = models.DateTimeField(
