@@ -1,7 +1,21 @@
-{% extends 'base.template.html' %} {% load cloudinary %} {% block content %}
+{% extends 'base.template.html' %} 
+{% load cloudinary %} {% block content %}
 
 <section class="container-fluid p-0">
   <p class="bg-title">SHOP ARCADE</p>
+
+  <!-- Search bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="navbar-nav">
+        <a class="nav-link" href="{% url 'shop' %}">View All</a>
+        <a class="nav-link" href="{% url 'display_category' category='Business-Wear' %}">Business Wear</a>
+        <a class="nav-link" href="{% url 'display_category' category='Casual-Wear' %}">Casual Wear</a>
+        <a class="nav-link" href="{% url 'display_category' category='Accessories' %}">Accessories</a>
+        <a class="nav-link" href="{% url 'display_category' category='Footwear' %}">Footwear</a>
+    </div>
+</nav>
+
+  <!-- Display the items in the product range -->
   <div class="row p-3">
     {% for item in products %}
     <div class="col-lg-3 col-md-6 col-12">
@@ -12,7 +26,7 @@
             <div><h5>{{item.name}}</h5></div>
             <div><h6>${{item.price}}</h6></div>
             <div class="shop-cart-bar">
-                <div><a href="" ><i class="fas fa-info-circle text-warning"></i></a></div>
+                <div><a href=""><i class="fas fa-info-circle text-warning"></i></a></div>
                 <div><a href="{% url 'add_cart' product_id=item.id %}" class="nav-link text-warning">Add Cart</a></div>
                 <div><a href=""><i class="far fa-star text-warning"></i></a></div>  
             </div>
@@ -23,6 +37,7 @@
 
 
   </div>
+
 </section>
 
 {% endblock %}
