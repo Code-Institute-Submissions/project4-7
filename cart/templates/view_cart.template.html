@@ -25,7 +25,7 @@
           {{cart_item.qty}}
           <a href="{% url 'add_qty' product_id=key %}" class="btn btn-light"><i class="far fa-plus-square text-dark"></i></a>
           </td>
-          <td>Total</td>
+          <td>$ {{ cart_item.item_total_cost }}</td>
           <td><a href="{% url 'remove_item' product_id=key %}" class="text-muted"><small>X</small></a></td>
         </tr>
         {%endfor%}

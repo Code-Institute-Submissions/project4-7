@@ -17,23 +17,22 @@ def add_cart(request, product_id):
     if product_id not in cart:
         product = get_object_or_404(Product, pk=product_id)
         # product is found, let's add it to the cart
-
         cart[product_id] = {
             'id': product_id,
             'name': product.name,
             'price': float(product.price),
-            'qty' : 1, 
+            'qty' : 1,
+            'item_total_cost' : float(product.price),
         }
 
         # save the cart back to sessions
         request.session['shopping_cart'] = cart
         messages.success(request, "product has been added to your cart!")
-        # return redirect(reverse('view_cart'))
     else:
-        cart[product_id]['qty'] +=1        
+        cart[product_id]['qty'] +=1  
+        cart[product_id]['item_total_cost'] = cart[product_id]['qty'] * cart[product_id]['price']      
         # save the cart back to sessions
         request.session['shopping_cart'] = cart
-        # return redirect(reverse('view_cart'))
     return redirect('shop', category='All')
 
 
@@ -49,6 +48,8 @@ def remove_item (request, product_id):
 def add_qty (request, product_id):
     cart = request.session.get('shopping_cart', {})
     cart[product_id]['qty'] += 1
+    cart[product_id]['item_total_cost'] = cart[product_id]['qty'] * cart[product_id]['price']      
+
     request.session['shopping_cart'] = cart
     return redirect(reverse('view_cart'))
 
@@ -60,5 +61,6 @@ def minus_qty (request, product_id):
         return redirect(reverse('view_cart'))
     else:
         cart[product_id]['qty'] -= 1
+        cart[product_id]['item_total_cost'] = cart[product_id]['qty'] * cart[product_id]['price']      
         request.session['shopping_cart'] = cart
         return redirect(reverse('view_cart'))
