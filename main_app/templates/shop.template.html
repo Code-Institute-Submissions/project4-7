@@ -7,11 +7,11 @@
   <!-- Search bar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light d-md-block d-none">
     <div class="navbar-nav ">
-        <a class="nav-link" href="{% url 'shop' %}">[View all]</a>
-        <a class="nav-link" href="{% url 'display_category' category='Business-Wear' %}">[Business Wear]</a>
-        <a class="nav-link" href="{% url 'display_category' category='Casual-Wear' %}">[Casual Wear]</a>
-        <a class="nav-link" href="{% url 'display_category' category='Accessories' %}">[Accessories]</a>
-        <a class="nav-link" href="{% url 'display_category' category='Footwear' %}">[Footwear]</a>
+        <a class="nav-link" href="{% url 'shop' category='All' %}">[View all]</a>
+        <a class="nav-link" href="{% url 'shop' category='Business-Wear' %}">[Business Wear]</a>
+        <a class="nav-link" href="{% url 'shop' category='Casual-Wear' %}">[Casual Wear]</a>
+        <a class="nav-link" href="{% url 'shop' category='Accessories' %}">[Accessories]</a>
+        <a class="nav-link" href="{% url 'shop' category='Footwear' %}">[Footwear]</a>
     </div>
 </nav>
 

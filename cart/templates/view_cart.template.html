@@ -35,7 +35,7 @@
         </tr>
     {% else %}
         <tr>
-            <td colspan="6">---  You have not selected any items <a href="{% url 'shop' %}" class="btn btn-light border p-2">Shop now</a>  --- </td>
+            <td colspan="6">---  You have not selected any items <a href="{% url 'shop' category='All' %}" class="btn btn-light border p-2">Shop now</a>  --- </td>
         </tr>
     {% endif %}
       </tbody>
