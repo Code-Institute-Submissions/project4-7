@@ -7,8 +7,11 @@ from main_app.views import shop
 def view_cart(request):
     cart = request.session.get('shopping_cart', {})
     final_cost = 0
+    # Calculate the final total costing for the charge
     for item in cart:
         final_cost = final_cost+ float(cart[item]['item_total_cost'])
+        
+    # convert to string to display decimals in html
     final_cost = format(float(final_cost),'.2f')
 
     return render (request, 'view_cart.template.html', {

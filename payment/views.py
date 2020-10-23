@@ -11,20 +11,27 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def checkout(request):
     cart = request.session.get("shopping_cart", {})
+    amount = 0
+    # load in amount to be charged
+    for item in cart:
+        amount = amount + float(cart[item]['item_total_cost'])
+    # convert to string for passing to template (html)
+    final_cost = format(float(amount),'.2f')
+    # convert to int for charging by stripe
+    amount = int(amount * 100)
 
-    amount_to_charge = 100
     if request.method == 'GET':
-        amount = amount_to_charge 
         key = settings.STRIPE_PUBLISHABLE_KEY
         return render(request, 'checkout.template.html', {
             'key' : key,
             'amount' : amount,
             'cart' : cart,
+            'final_cost' : final_cost,
         })
     else:
         stripe.api_key = settings.STRIPE_SECRET_KEY 
         charge = stripe.Charge.create(
-            amount= amount_to_charge,
+            amount= amount,
             currency='sgd',
             description='Payment made for transaction',
             source=request.POST['stripeToken']
