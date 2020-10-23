@@ -6,8 +6,14 @@ from main_app.views import shop
 # Create your views here.
 def view_cart(request):
     cart = request.session.get('shopping_cart', {})
+    final_cost = 0
+    for item in cart:
+        final_cost = final_cost+ float(cart[item]['item_total_cost'])
+    final_cost = format(float(final_cost),'.2f')
+
     return render (request, 'view_cart.template.html', {
         'cart': cart,
+        'final_cost' : final_cost
     })
 
 def add_cart(request, product_id):
@@ -20,9 +26,9 @@ def add_cart(request, product_id):
         cart[product_id] = {
             'id': product_id,
             'name': product.name,
-            'price': float(product.price),
+            'price': format(float(product.price),'.2f'),
             'qty' : 1,
-            'item_total_cost' : float(product.price),
+            'item_total_cost' : format(float(product.price),'.2f'),
         }
 
         # save the cart back to sessions
@@ -30,7 +36,8 @@ def add_cart(request, product_id):
         messages.success(request, "product has been added to your cart!")
     else:
         cart[product_id]['qty'] +=1  
-        cart[product_id]['item_total_cost'] = cart[product_id]['qty'] * cart[product_id]['price']      
+        item_total_cost = cart[product_id]['qty'] * float(cart[product_id]['price']) 
+        cart[product_id]['item_total_cost'] = format(float(item_total_cost),'.2f')          
         # save the cart back to sessions
         request.session['shopping_cart'] = cart
     return redirect('shop', category='All')
@@ -48,7 +55,8 @@ def remove_item (request, product_id):
 def add_qty (request, product_id):
     cart = request.session.get('shopping_cart', {})
     cart[product_id]['qty'] += 1
-    cart[product_id]['item_total_cost'] = cart[product_id]['qty'] * cart[product_id]['price']      
+    item_total_cost = cart[product_id]['qty'] * float(cart[product_id]['price']) 
+    cart[product_id]['item_total_cost'] = format(float(item_total_cost),'.2f') 
 
     request.session['shopping_cart'] = cart
     return redirect(reverse('view_cart'))
@@ -61,6 +69,8 @@ def minus_qty (request, product_id):
         return redirect(reverse('view_cart'))
     else:
         cart[product_id]['qty'] -= 1
-        cart[product_id]['item_total_cost'] = cart[product_id]['qty'] * cart[product_id]['price']      
+        item_total_cost = cart[product_id]['qty'] * float(cart[product_id]['price']) 
+        cart[product_id]['item_total_cost'] = format(float(item_total_cost),'.2f') 
+        
         request.session['shopping_cart'] = cart
         return redirect(reverse('view_cart'))

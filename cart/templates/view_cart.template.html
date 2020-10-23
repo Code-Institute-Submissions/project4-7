@@ -1,6 +1,6 @@
 {% extends 'base.template.html' %} {% block content %}
 <section class="container-fluid p-0">
-  <p class="bg-title">YOUR SHOPPING CART</p>
+  <p class="bg-title">YOUR SHOPPING CART </p>
   <div class="m-3">
     <table class="table text-center">
       <thead>
@@ -30,7 +30,7 @@
         </tr>
         {%endfor%}
         <tr>
-            <td colspan="5" class="text-right text-dark"><h4>Total : $ 0.00</h4></td>
+            <td colspan="5" class="text-right text-dark"><h4>Total : $ {{ final_cost }}</h4></td>
             <td><a href="{% url 'checkout' %}" class="btn btn-light">Checkout</a> </td>
         </tr>
     {% else %}
