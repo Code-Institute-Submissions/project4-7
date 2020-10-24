@@ -27,19 +27,21 @@
             <div><h6>${{item.price}}</h6></div>
             <div class="shop-cart-bar">
                 <div><a href=""><i class="fas fa-info-circle text-warning"></i></a></div>
+
+                <!-- do not allow user to add to cart and display no stock  -->
                 {% if item.stock_qty > 0 %}
                 <div><a href="{% url 'add_cart' product_id=item.id %}" class="nav-link text-warning">Add Cart</a></div>
                 {% else %}
-                <div><a disabled class="nav-link text-danger">Not Available</a></div>
+                <div><a disabled class="nav-link text-muted">No Stock</a></div>
                 {% endif %}
                 <div><a href=""><i class="far fa-star text-warning"></i></a></div>  
+                <!-- end of if loop -->
+
             </div>
         </div>
       </div>
     </div>
     {% endfor %}
-
-
   </div>
 
 </section>

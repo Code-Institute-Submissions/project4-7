@@ -1,46 +1,43 @@
 {% extends "account/base.html" %}
-
+{% load crispy_forms_tags %}
 {% load i18n %}
 {% load account socialaccount %}
-
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
-
 {% block content %}
+<section class="bg-auth row pb-5">
+    <div class="col-12 text-center pb-5"><h1>My account</h1></div>
 
-<h1>{% trans "Sign In" %}</h1>
-<h1>Login Our Page</h1>
 
-{% get_providers as socialaccount_providers %}
+    <div class="col-md-5 col-12 mx-auto bg-form">
+	<h3>Login to make your purchase</h3>
 
-{% if socialaccount_providers %}
-<p>{% blocktrans with site.name as site_name %}Please sign in with one
-of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+	<form class="login" method="POST" action="{% url 'account_login' %}">
+		{% csrf_token %}
+		{{ form|crispy}}}
+		
+		<a class="button secondaryAction text-muted" href="{% url 'account_reset_password' %}">reset password</a>
+		<button class="primaryAction btn btn-auth" type="submit">Login</button>
 
-<div class="socialaccount_ballot">
+        </form>
+    </div>
 
-  <ul class="socialaccount_providers">
-    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-  </ul>
-
-  <div class="login-or">{% trans 'or' %}</div>
-
-</div>
-
-{% include "socialaccount/snippets/login_extra.html" %}
-
-{% else %}
-<p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-{% endif %}
-<form class="login" method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-</form>
-
+    <div class="col-md-5 col-12 mx-auto bg-form">
+    <div class="mx-5">
+        <h3>Create an Account</h3>
+        <p>Create an account and you will be able to:</p>   
+        <div>
+        <ul>
+            <li>save time at checkout</li>
+            <li>access your online order history</li>
+            <li>save multiple delivery addresses</li>
+            <li>enjoy the many additional benefits of the MASCULINE EXPERIENCE program</li>
+        </ul>
+        </div>
+        <div>
+        <a href="{{ signup_url }}" class="btn btn-auth">Create an account now</a>
+        </div>
+        <p>Activate account with initial login data.</p>
+    </div>
+     </div>
+</section>  
 {% endblock %}

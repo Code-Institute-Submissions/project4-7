@@ -20,29 +20,31 @@ def view_cart(request):
     })
 
 def add_cart(request, product_id):
-    # load cart detail
-    cart = request.session.get('shopping_cart', {})
-    # check whether the product_is not in the cart. else we will add it
-    if product_id not in cart:
-        product = get_object_or_404(Product, pk=product_id)
-        # product is found, let's add it to the cart
-        cart[product_id] = {
-            'id': product_id,
-            'name': product.name,
-            'price': format(float(product.price),'.2f'),
-            'qty' : 1,
-            'item_total_cost' : format(float(product.price),'.2f'),
-        }
+    product = get_object_or_404(Product, pk=product_id)
+    # if there is available stock then add to cart
+    if product.stock_qty > 0:
+        # load cart detail
+        cart = request.session.get('shopping_cart', {})
+        # check whether the product_is not in the cart. else we will add it
+        if product_id not in cart:            
+            # product is found, let's add it to the cart
+            cart[product_id] = {
+                'id': product_id,
+                'name': product.name,
+                'price': format(float(product.price),'.2f'),
+                'qty' : 1,
+                'item_total_cost' : format(float(product.price),'.2f'),
+            }
+            # save the cart back to sessions
+            request.session['shopping_cart'] = cart
+            messages.success(request, "product has been added to your cart!")
+        else:
+            cart[product_id]['qty'] +=1  
+            item_total_cost = cart[product_id]['qty'] * float(cart[product_id]['price']) 
+            cart[product_id]['item_total_cost'] = format(float(item_total_cost),'.2f')          
+            # save the cart back to sessions
+            request.session['shopping_cart'] = cart
 
-        # save the cart back to sessions
-        request.session['shopping_cart'] = cart
-        messages.success(request, "product has been added to your cart!")
-    else:
-        cart[product_id]['qty'] +=1  
-        item_total_cost = cart[product_id]['qty'] * float(cart[product_id]['price']) 
-        cart[product_id]['item_total_cost'] = format(float(item_total_cost),'.2f')          
-        # save the cart back to sessions
-        request.session['shopping_cart'] = cart
     return redirect('shop', category='All')
 
 

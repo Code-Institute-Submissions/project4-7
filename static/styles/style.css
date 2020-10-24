@@ -10,6 +10,7 @@
 
 body {
     font-family: 'Raleway', sans-serif;
+    background: rgb(245, 245, 245);
 }
 .navbar-brand {
     font-family: 'Dancing Script', cursive;
@@ -137,4 +138,21 @@ footer {
     font-size: 140%;
     letter-spacing: 4px;
     padding: 10px 15px ;
+}
+
+/* background color and styling for auth forms */
+.bg-form{
+    background-color: rgb(255,255,255);
+    padding: 30px 20px;
+}
+.btn-auth {
+    padding: 10px 40px;
+    background: black;
+    border : 1px white solid;
+    text-decoration: none;
+    color : white;
+    vertical-align: middle;
+    font-weight: 500;
+    /* font-family: 'Lateef', cursive; */
+    border-radius: 0;
 }
