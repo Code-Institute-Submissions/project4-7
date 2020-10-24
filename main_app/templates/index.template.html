@@ -1,6 +1,11 @@
 {% extends 'base.template.html' %} 
 {% block content %}
 <main class="container-fluid px-md-5 px-3 py-3">
+    {% if messages %}  
+        <div class="alert alert-dark">    
+              {% for message in messages %} <p>{{ message }}</p> {% endfor %}
+        </div>
+    {% endif %}
   <div class="row">
     <!-- Carousell display -->
     <div class="col-12">
